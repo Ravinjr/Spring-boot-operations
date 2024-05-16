@@ -1,5 +1,6 @@
 package com.appllication.development.schoolproject.service;
 
+import com.appllication.development.schoolproject.dto.StudentDTO;
 import com.appllication.development.schoolproject.model.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ class StudentServiceTest   {
 
     @Test
     void addStudent() {
-        Student student=new Student();
+        StudentDTO student=new StudentDTO();
         student.setFirstName("Pasindu");
         student.setLastName("Chamara");
         student.setDistrict("Kandy");

@@ -1,6 +1,9 @@
 package com.appllication.development.schoolproject.model;
 
 import jakarta.persistence.*;
+import org.springframework.context.annotation.Lazy;
+
+import java.util.Set;
 
 @Entity
 // make department class as entity
@@ -14,6 +17,8 @@ public class Department {
     @Column(name = "DEPARTMENT_ID",nullable = false,updatable = false)
     private Integer departmentId;
 
+    @OneToMany(fetch = FetchType.LAZY,cascade = {CascadeType.ALL},orphanRemoval = true,mappedBy = "department")
+    private Set<Student> students;
     public Integer getDepartmentId() {
         return departmentId;
     }
@@ -54,4 +59,12 @@ public class Department {
 
     @Column(name = "DEPARTMENT_CODE")
     private String departmentCode;
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 }

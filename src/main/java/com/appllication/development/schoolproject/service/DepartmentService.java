@@ -13,6 +13,7 @@ import java.util.List;
 public class DepartmentService {
     @Autowired
     private DepartmentDao departmentDao;
+
 //    public List<Department> getAllDepartments(){
 //        List<Department> departments=this.departmentDao.findAll();
 //        return departments;
@@ -47,8 +48,8 @@ public class DepartmentService {
         return new DepartmentDTO(department);
     }
 
-    public Department getDepartmentById(Integer departmentId){
+    public DepartmentDTO getDepartmentById(Integer departmentId){
         Department department=this.departmentDao.findByDepartmentId(departmentId);
-        return department;
+        return new DepartmentDTO(department);
     }
 }

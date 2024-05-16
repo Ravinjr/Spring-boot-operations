@@ -1,6 +1,10 @@
 package com.appllication.development.schoolproject.dto;
 
 import com.appllication.development.schoolproject.model.Department;
+import com.appllication.development.schoolproject.model.Student;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //dto class is used to transfer data controller,service except Department class
 public class DepartmentDTO {
@@ -8,6 +12,8 @@ public class DepartmentDTO {
     private String departmentName;
     private String departmentCode;
     private String status;
+
+    private List<StudentDTO> students;
 
     public DepartmentDTO(){
 
@@ -19,6 +25,11 @@ public class DepartmentDTO {
         this.departmentName=department.getDepartmentName();
         this.departmentCode=department.getDepartmentCode();
         this.status=department.getStatus();
+
+        for(Student student: department.getStudents()){
+            StudentDTO studentDTO=new StudentDTO(student);
+            this.getStudents().add(studentDTO);
+        }
     }
 
     public Integer getDepartmentId() {
@@ -51,5 +62,17 @@ public class DepartmentDTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<StudentDTO> getStudents() {
+        //if there is no students to get away getting null point exception
+        if (students==null){
+            this.students=new ArrayList<>();
+        }
+        return students;
+    }
+
+    public void setStudents(List<StudentDTO> students) {
+        this.students = students;
     }
 }

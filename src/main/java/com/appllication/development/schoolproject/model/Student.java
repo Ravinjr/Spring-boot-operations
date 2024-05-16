@@ -19,6 +19,11 @@ public class Student {
     @Column(name = "DISTRICT")
     public String district;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    // relationship with department database from student table
+    @JoinColumn(name = "DEPARTMENT_ID")
+    private Department department;
+
     public int getStudentId() {
         return studentId;
     }
@@ -49,5 +54,13 @@ public class Student {
 
     public void setDistrict(String district) {
         this.district = district;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

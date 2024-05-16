@@ -28,8 +28,8 @@ public class DepartmentController {
     }
 
     @RequestMapping(value = "/getDepartmentById/{departmentId}",method = RequestMethod.GET)
-    public ResponseEntity<Department> getDepartmentById(@PathVariable Integer departmentId){
-        Department department=this.departmentService.getDepartmentById(departmentId);
+    public ResponseEntity<DepartmentDTO> getDepartmentById(@PathVariable Integer departmentId){
+        DepartmentDTO department=this.departmentService.getDepartmentById(departmentId);
         return new ResponseEntity<>(department,HttpStatus.OK);
     }
 
